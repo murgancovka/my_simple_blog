@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Simple blog created with:
 
 * Sinatra
@@ -11,7 +10,7 @@ Simple blog created with:
 
 * MySQL
 
-+ bundles, migrations
+* Using bundles and migrations
 
 I just wanted to see how works Sinatra, Does it better than Rails or not.
 
@@ -55,9 +54,3 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 Current version is 0.0.1.
 Copyright (c) 2011 Vitali Zakharoff.
-=======
-my_simple_blog
-==============
-
-SImpel Blog with Sinatra/HAML/SASS/MYSQL
->>>>>>> 54c52e6bf8e7165aa690e711c78b7bf6208a7f0d
