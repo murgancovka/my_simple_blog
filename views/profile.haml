@@ -1,0 +1,23 @@
+%h1 My Profile
+%p
+  You can edit your profile details here
+  
+%p
+=styled_flash
+
+.edit      
+  %form{ :action => "/profile_update", :method => "post"}
+    %fieldset
+      %ol
+        %li
+          %label Username:
+          %input{:type => "text", :name => "user[username]", :class => "text", :value => @user.username, :disabled => ""}
+        %li
+          %label New Password:
+          %input{:type => "password", :name => "user[password]", :class => "text"}
+        %li
+          %label Repeat New Password:
+          %input{:type => "password", :name => "user[rpassword]", :class => "text"}
+          %input{:type => "hidden", :name => "user[id]", :value => session[:id]}
+        %li
+          %input{:type => "submit", :value => "Change", :class => "button"}

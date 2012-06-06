@@ -1,0 +1,11 @@
+%h1 My Posts &darr;
+.notes
+  - @contents.each do |item|
+    .title
+      = item.title[0..90]
+    %span.date
+      Added
+      = item.created_at.strftime("%m.%d.%y | %H:%m")
+    .text
+      = item.text[0..90]
+

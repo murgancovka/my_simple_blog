@@ -1,0 +1,29 @@
+.menu  
+  %span.action
+    %a{:href => "/posts"}
+      &larr; Show all
+  &nbsp;|
+  %span.action
+    %a{:href => "/posts/edit/#{@content.id}"}
+      Edit this post
+  &nbsp;|
+  %span.action
+    %a{:href => "/posts/delete/#{@content.id}", :method => :delete}
+      Delete this post
+
+%p
+  =styled_flash
+.notes      
+  %form{ :action => "/posts/edit/#{@content.id}", :method => "post"}
+    %fieldset
+      %ol
+        %li
+          %label Title:
+          %input{:type => "text", :name => "post[title]", :class => "text", :value => @content.title, :size => 80 }
+        %li
+          %label Text:
+          %textarea{:name => "post[text]", :rows=>20, :cols=>80}
+            =@content.text
+          %input{:type => "hidden", :name => "post[id]", :value => @content.id}
+        %li
+          %input{:type => "submit", :value => "Edit", :class => "button"}

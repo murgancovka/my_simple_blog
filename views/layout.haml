@@ -1,0 +1,39 @@
+!!! 5
+%html  
+  %head  
+    %title Test!
+    %link(rel="stylesheet" href="http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css")  
+    %link{:rel => "stylesheet", :href => "/css/style.css", :type => "text/css", :media => "all"}
+  %body
+    #top
+      .nav
+        .left_nav
+          =Time.now.strftime("Today is %m.%d.%y")
+        .right_nav
+          - if session[:id]
+            You are logged as
+            %b
+              =session[:user]
+            &nbsp;|&nbsp;
+            %a(href="logout")
+              Logout
+      
+    #wrapper  
+      #header
+        .left
+          %h1 My Blog
+          %h3 All things are necessary
+
+      #menu  
+        =haml :menu
+            
+      #content  
+        =yield 
+
+      - if !session[:id]
+        #side_bar  
+          =haml :right_side
+
+      #footer  
+        %p  
+          This is the footer. Copyright &copy; 2012. Version 0.0.1

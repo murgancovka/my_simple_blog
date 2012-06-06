@@ -1,0 +1,24 @@
+%h1 My Posts &darr;
+%p
+  =styled_flash
+
+.notes
+  - @contents.each do |item|
+    .title
+      = item.title[0..90]
+      &nbsp;|
+      %span.action
+        %a{:href => "/posts/show/#{item.id}"}
+          Show
+      &nbsp;|
+      %span.action
+        %a{:href => "/posts/edit/#{item.id}"}
+          Edit
+      &nbsp;|
+      %span.action
+        %a{:href => "/posts/delete/#{item.id}", :method => :delete}
+          Delete  
+  
+
+
+      

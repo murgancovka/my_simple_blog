@@ -1,0 +1,12 @@
+%ol  
+  %a(href="/")  
+    %li Index  
+  %a(href="/about")  
+    %li About
+  - if session[:id]
+    %a(href="/posts")
+      %li My Posts
+    %a(href="/profile")
+      %li My Profile
+    %a(href="/secret")
+      %li Secret Place

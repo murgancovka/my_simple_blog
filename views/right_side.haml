@@ -1,0 +1,14 @@
+%h1 Login Form here
+%form{ :action => "/login", :method => "post"}
+  %ol
+    %li
+      %input{:type => "text", :name => "username", :class => "text"}
+    %li
+      %input{:type => "password", :name => "password", :class => "text"}
+    %li
+      %input{:type => "submit", :value => "Login", :class => "button"}
+
+  =styled_flash
+
+  %p
+    Visit my <a href="http://www.vitalizakharoff.com">home page</a>.
