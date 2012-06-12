@@ -1,4 +1,4 @@
-            (http://www.estof.net/img/logo.png)
+(http://www.estof.net/img/logo.png)
 
 Simple blog created with:
 
