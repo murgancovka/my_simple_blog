@@ -1,5 +1,3 @@
-![VZ](http://www.estof.net/img/logo.png)
-
 Simple blog created with:
 
 * Sinatra
@@ -46,6 +44,13 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 * l18n
 
+#Screenshots
+
+![VZ](http://www.estof.net/1/test1.png)
+
+![VZ](http://www.estof.net/1/test2.png)
+
+![VZ](http://www.estof.net/1/test3.png)
 
 #Some bugs founded?
 
@@ -56,3 +61,5 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 Current version is 0.0.1.
 Copyright (c) 2011 Vitali Zakharoff.
+
+
