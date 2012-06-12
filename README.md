@@ -22,6 +22,10 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
     rake db:migrate
     
   this command will generates two tables
+  
+  And install bundle
+  
+    bundle install
     
         
 # What you can do?
