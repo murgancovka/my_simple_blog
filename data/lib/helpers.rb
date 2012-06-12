@@ -22,14 +22,9 @@ helpers do
     def check_profile_passwords(password,rpassword)
       @user=User.find(:first, :conditions=>["id=?", session[:id]])
       if (((password==rpassword) and (!password.blank? or !rpassword.blank?) and ((password.length >= 3) and (rpassword.length >= 3))))
-	#if ((password.length >= 3) and (rpassword.length >= 3))
-	  @user.password=Digest::SHA1.hexdigest(password)
-	  @user.save
-	  flash[:notice] = "Your data successuflly changed!"
-	#else
-	#  flash[:error] = "Error! Password length should be at least 3 symbols!"
-	#end
-	#  flash[:notice] = "Your data successuflly changed!"
+	@user.password=Digest::SHA1.hexdigest(password)
+	@user.save
+	flash[:notice] = "Your data successuflly changed!"
       else
 	flash[:error] = "Error! Passwords don\'t match or password length less than 3 symbols"
       end
