@@ -1,3 +1,13 @@
+### Single face example
+
+![Two Face Singing Example](https://github.com/exploid/songster/raw/master/images/me-sidebyside.gif)
+
+### Two face example
+
+![Two Face Singing Example](https://github.com/exploid/songster/raw/master/images/me-double-sidebyside.gif)
+
+
+
 Simple blog created with:
 
 * Sinatra
