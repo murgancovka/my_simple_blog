@@ -62,7 +62,7 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 * EMAIL	    :   hello@estof.net
         
-* URL	    :   www.vitalizakharoff.com
+* URL	    :   www.estof.net
 
 
 Current version is 0.0.1.
