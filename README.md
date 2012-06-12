@@ -46,9 +46,15 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 #Screenshots
 
+* Admin view
+
 ![VZ](http://www.estof.net/1/test1.png)
 
+* Login form failed
+
 ![VZ](http://www.estof.net/1/test2.png)
+
+* Edit Post
 
 ![VZ](http://www.estof.net/1/test3.png)
 
