@@ -1,12 +1,4 @@
-### Single face example
-
-![Two Face Singing Example](https://github.com/exploid/songster/raw/master/images/me-sidebyside.gif)
-
-### Two face example
-
-![Two Face Singing Example](https://github.com/exploid/songster/raw/master/images/me-double-sidebyside.gif)
-
-
+            (http://www.estof.net/img/logo.png)
 
 Simple blog created with:
 
