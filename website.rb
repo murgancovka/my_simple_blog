@@ -1,5 +1,4 @@
-require 'bundler'
-Bundler.require
+require "bundler/setup"
 require 'sinatra'
 require 'haml'
 require 'active_record'
