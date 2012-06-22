@@ -16,6 +16,8 @@ Simple blog is using:
 
 * Pagination
 
+* shotgun
+
 I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 
@@ -30,6 +32,10 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
   And install bundle
   
     bundle install
+    
+  Then just
+
+    shotgun -p 4567 website.rb
     
         
 # What you can do?
