@@ -12,6 +12,8 @@ Simple blog created with:
 
 * Using bundles and migrations
 
+* i18n
+
 I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 
@@ -44,9 +46,8 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
 
 * Upgrade database
 
-* Do a few blog design
+* Do a few blog designs
 
-* l18n
 
 #Screenshots
 
