@@ -6,6 +6,9 @@ require 'mysql2'
 require 'sinatra/flash'
 require 'sass'
 require 'yaml'
+require 'will_paginate'
+require 'will_paginate/active_record'
+require 'i18n'
 
 ############ config database
 
@@ -25,6 +28,11 @@ configure :production do
   ActiveRecord::Base.establish_connection @db_settings['production']
 end
  
+############ i18n
+
+I18n.locale = :es
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config', 'locales', '*.yml').to_s]
+
 ############ models
 
 load 'data/lib/models.rb'
@@ -44,13 +52,30 @@ end
 get '/' do  
   @users=User.all
   @contents=Content.new
-  @contents = Content.is_enabled
+  @contents=Content.paginate(:order => "created_at desc", :page => params[:page], :per_page => 10)
 
   haml :index
 end
 
-get '/about' do  
+get '/about' do
+  @user=User.find(1) #shame on me
   haml :about  
+end
+
+get '/about/edit' do
+  require_login
+  @user=User.find(session[:id])
+  haml :about_edit  
+end
+
+post '/about/edit/:id' do
+  user=User.find(params[:user][:id])
+  user.about=params[:user][:about] 
+  if user.save
+    redirect_with_notice_message '/about', 'Successuflly edited information about yourself!'
+  else
+    flash[:error] = "Something's wrong!"
+  end
 end
 
 get '/login' do
@@ -60,7 +85,7 @@ get '/login' do
 end
 
 post '/login' do
-  if authenticate(params[:username], params[:password])
+  if authenticate params[:username], params[:password]
     redirect '/'
   else
     redirect_with_error_message '/', 'Email or password wrong. Please try again'
@@ -68,9 +93,10 @@ post '/login' do
 end
 
 get '/posts' do
-	require_login
+    require_login
     @contents=Content.new
-    @contents=Content.is_enabled
+    @contents=Content.paginate(:order => "created_at desc", :page => params[:page], :per_page => 10)
+    
     haml :posts
 end
 
@@ -86,14 +112,29 @@ get '/posts/edit/:id' do
   haml :edit
 end
 
+get '/posts/add' do
+  require_login
+  @content=Content.new
+  haml :add
+end
+
+post '/posts/add' do
+  content=Content.create(params[:post])
+  if content.save
+    redirect_with_notice_message '/posts', 'Successuflly added Post!'
+  else
+    flash[:error] = "You've forgot to add title or content :)"
+  end
+end
+
 post '/posts/edit/:id' do
   post = Content.find(params[:id])
   post.title = params[:post][:title] 
   post.text = params[:post][:text]
   if post.save
-	redirect_with_notice_message '/posts', 'Successuflly edited Post!'
+    redirect_with_notice_message '/posts', 'Successuflly edited Post!'
   else
-    flash[:error] = "You forgot to add title or content :)"
+    flash[:error] = "You've forgot to add title or content :)"
   end
 end
 

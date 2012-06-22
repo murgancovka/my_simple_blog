@@ -1,0 +1,17 @@
+.menu  
+  %span.action
+    %a{:href => "/about"}
+      Show my info
+%br
+%h1 About Myself
+%p
+  %form{ :action => "/about/edit/#{@user.id}", :method => "post"}
+    %fieldset
+      %ol
+        %li
+          %label About:
+          %textarea{:name => "user[about]", :rows=>20, :cols=>80}
+            =@user.about
+          %input{:type => "hidden", :name => "user[id]", :value => @user.id}
+        %li
+          %input{:type => "submit", :value => "Add", :class => "button"} 

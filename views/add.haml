@@ -1,0 +1,20 @@
+%p
+  =styled_flash
+  
+.menu  
+  %span.action
+    %a{:href => "/posts"}
+      &larr; Show all
+.notes      
+  %form{ :action => "/posts/add", :method => "post"}
+    %fieldset
+      %ol
+        %li
+          %label Title:
+          %input{:type => "text", :name => "post[title]", :class => "text", :size => 80 }
+        %li
+          %label Text:
+          %textarea{:name => "post[text]", :rows=>20, :cols=>80}
+          %input{:type => "hidden", :name => "post[user_id]", :value => session[:id]}
+        %li
+          %input{:type => "submit", :value => "Add", :class => "button"}

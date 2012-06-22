@@ -1,6 +1,10 @@
 %h1 My Posts &darr;
 %p
   =styled_flash
+  
+%p
+  %a{:href => "/posts/add" }
+    Add Post
 
 .notes
   - @contents.each do |item|
@@ -17,7 +21,11 @@
       &nbsp;|
       %span.action
         %a{:href => "/posts/delete/#{item.id}", :method => :delete}
-          Delete  
+          Delete
+
+%p          
+  = will_paginate @contents
+   
   
 
 

@@ -8,7 +8,7 @@ development:
   reconnect: true
 
 production:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   host: localhost
   database: 

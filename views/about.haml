@@ -1,3 +1,9 @@
+- if session[:id]
+  .menu  
+    %span.action
+      %a{:href => "/about/edit"}
+        Edit
+%br
 %h1 About Myself
 %p
-  This is a simple application to manage with your posts in blog using Sinatra/HAML/SASS with ActiveRecord, too.  
+  =@user.about

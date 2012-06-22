@@ -10,11 +10,7 @@ helpers do
             session[:id] = user.id.to_s
             session[:user] = user.username.to_s
             return true
-          else
-            return false
           end
-        else
-           return false
         end
         return false
     end
@@ -38,6 +34,9 @@ helpers do
     def redirect_with_error_message(to_location, message)
       flash[:error] = message
       redirect to_location
-    end   
-
+    end
+    
+    def t(*args)
+      I18n.t(*args)
+    end
 end

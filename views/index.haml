@@ -8,4 +8,8 @@
       = item.created_at.strftime("%m.%d.%y | %H:%m")
     .text
       = item.text[0..90]
+      
+%p          
+  = will_paginate @contents
+
 
