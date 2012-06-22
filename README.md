@@ -1,4 +1,4 @@
-Simple blog created with:
+Simple blog is using:
 
 * Sinatra
 
@@ -13,6 +13,8 @@ Simple blog created with:
 * Using bundles and migrations
 
 * i18n
+
+* Pagination
 
 I just wanted to see how works Sinatra, Does it better than Rails or not.
 
