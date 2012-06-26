@@ -30,7 +30,7 @@ end
  
 ############ i18n
 
-I18n.locale = :es
+I18n.locale = :en
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config', 'locales', '*.yml').to_s]
 
 ############ models
@@ -95,7 +95,7 @@ end
 get '/posts' do
     require_login
     @contents=Content.new
-    @contents=Content.paginate(:order => "created_at desc", :page => params[:page], :per_page => 10)
+    @contents=Content.paginate(:order => "created_at desc", :page => params[:page], :per_page => 20)
     
     haml :posts
 end
@@ -119,18 +119,28 @@ get '/posts/add' do
 end
 
 post '/posts/add' do
-  content=Content.create(params[:post])
-  if content.save
-    redirect_with_notice_message '/posts', 'Successuflly added Post!'
+  if params[:publish]
+    content=Content.create(params[:post])
+    content.is_enabled=true
+    if content.save
+      redirect_with_notice_message '/posts', 'Successuflly added Post!'
+    else
+      flash[:error] = "You've forgot to add title or content :)"
+    end
   else
-    flash[:error] = "You've forgot to add title or content :)"
+    content=Content.create(params[:post])
+    content.is_enabled=false
+    if content.save
+      redirect_with_notice_message '/posts', 'Successuflly added post to draft!'
+    end
   end
 end
 
 post '/posts/edit/:id' do
-  post = Content.find(params[:id])
-  post.title = params[:post][:title] 
-  post.text = params[:post][:text]
+  post=Content.find(params[:id])
+  post.title=params[:post][:title] 
+  post.text=params[:post][:text]
+  
   if post.save
     redirect_with_notice_message '/posts', 'Successuflly edited Post!'
   else

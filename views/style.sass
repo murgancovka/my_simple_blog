@@ -4,11 +4,14 @@ $margin: 16px
 $width: 960px
 $dark: #343434
 $light_gray: #d6d6d6
+$dark_grey: #2a2a2a
+$green: #478c1e
 $dark_blue: #2db7d4
 $darken_blue: #458896
 $dark_red: #8a1f11
 $light_green: #514721
 $black: #000
+$red: #ae2121
 
 .error
   color: $dark_red
@@ -45,7 +48,7 @@ h3
     size: 13px
     family: sans-serif
   color: $grey
-      
+
 ol
   display: block
   margin:
@@ -111,19 +114,19 @@ ol
 form
   padding:
     top: 15px
-       
-  input
-    &[type="submit"]
-      height: 20px
-      width: 50px
-      font:
-        size: 12px
-          
+
+  .button
+    width: 80px
+    height: 22px
+    
+  .button_draft
+    color: $dark_blue
+    width: 100px
+    height: 22px
+
   input
     height: 15px
     width: 120px
-    font:
-      size: 12px
 
           
 ol
@@ -204,6 +207,12 @@ ol
     color: #2db7d4
     font:
       size: 12px
+      
+  .published
+    color: $green
+  
+  .draft
+    color: $red
 
   p
     width: 70%
@@ -213,7 +222,6 @@ ol
       size: 12px
       color: $black
 
- 
 #side_bar
   margin: 0px 0 
   width: 30%  

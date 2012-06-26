@@ -9,6 +9,12 @@
 .notes
   - @contents.each do |item|
     .title
+      -if !item.is_enabled
+        %span.draft
+          (Draft)
+      -else
+        %span.published
+          (Published)
       = item.title[0..90]
       &nbsp;|
       %span.action
@@ -23,7 +29,7 @@
         %a{:href => "/posts/delete/#{item.id}", :method => :delete}
           Delete
 
-%p          
+%p        
   = will_paginate @contents
    
   

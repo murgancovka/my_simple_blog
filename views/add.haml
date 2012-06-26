@@ -17,4 +17,5 @@
           %textarea{:name => "post[text]", :rows=>20, :cols=>80}
           %input{:type => "hidden", :name => "post[user_id]", :value => session[:id]}
         %li
-          %input{:type => "submit", :value => "Add", :class => "button"}
+          %input{:type => "submit", :value => "Add", :name=> "publish", :class => "button"}
+          %input{:type => "submit", :value => "Save as draft", :name=> "draft", :class => "button_draft"}
