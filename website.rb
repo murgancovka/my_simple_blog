@@ -1,52 +1,14 @@
-require "bundler/setup"
+require 'bundler/setup'
 require 'sinatra'
-require 'haml'
-require 'active_record'
-require 'mysql2'
-require 'sinatra/flash'
-require 'sass'
-require 'yaml'
-require 'will_paginate'
-require 'will_paginate/active_record'
-require 'i18n'
+require File.join(File.dirname(__FILE__), 'environment')
 
-############ config database
-
-configure do
-  ROOT = ::File.dirname(__FILE__)
-  require 'erb'
-  @db_settings = YAML::load(ERB.new(IO.read("config/database.yml")).result)
-end
-
-configure :development do
-  set :environment, :development
-  ActiveRecord::Base.establish_connection @db_settings['development']
-end
-
-configure :production do
-  set :environment, :production
-  ActiveRecord::Base.establish_connection @db_settings['production']
-end
+########### Project
  
-############ i18n
+enable :sessions
 
-I18n.locale = :en
-I18n.load_path += Dir[File.join(File.dirname(__FILE__), 'config', 'locales', '*.yml').to_s]
-
-############ models
-
-load 'data/lib/models.rb'
-
-############ helpers
-
-load 'data/lib/helpers.rb'
-
-############ actions
- 
-enable :sessions 
-
-get '/css/style.css' do
-   sass :style
+get '/css/:name.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :"css/#{params[:name]}"
 end
  
 get '/' do  
@@ -125,7 +87,7 @@ post '/posts/add' do
     if content.save
       redirect_with_notice_message '/posts', 'Successuflly added Post!'
     else
-      flash[:error] = "You've forgot to add title or content :)"
+      flash[:error] = get_model_errors(content)
     end
   else
     content=Content.create(params[:post])
@@ -173,12 +135,39 @@ get '/secret' do
    haml :secret
 end
 
-get '/test' do
-   require_login
-   @coutries=Country.is_enabled
-   @cities=City.related_with_country
-   haml :some_page
+get '/contact' do
+  haml :contact
 end
+
+post '/contact' do  
+    
+  name = params[:name]
+  mail = params[:mail]
+  body = params[:body]
+  
+  options = {
+    :to => "hello@estof.net",
+    :from => "madgamer@ot.ee",
+    :subject=> "Contact Form",
+    :body => "Body: #{params[:body]}",
+    :via => :smtp,
+    :via_options => {
+      :address => 'smtp.gmail.com',
+      :port => '587',
+      :user_name => 'vitalizakharoff@gmail.com',
+      :password => 'fAn1337!',
+      :authentication => :plain,
+      :domain => "gmail.com"
+     },
+    :headers => { "Reply-To" => params[:mail] }
+     
+  }
+
+  Pony.mail(options)
+    
+  redirect_with_notice_message '/contact', 'Message successuflly sent!'
+end
+
 
 get '/logout' do
   session.clear

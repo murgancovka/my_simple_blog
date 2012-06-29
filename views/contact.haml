@@ -1,0 +1,18 @@
+%p
+  =styled_flash
+  
+.notes      
+  %form{ :action => "/contact", :method => "post"}
+    %fieldset
+      %ol
+        %li
+          %label Your name
+          %input{:type => "text", :name => "name", :class => "text", :size => 80 }
+        %li
+          %label Your e-mail
+          %input{:type => "text", :name => "mail", :class => "text", :size => 80 }
+        %li
+          %label Your message:
+          %textarea{:name => "body", :rows=>20, :cols=>80}
+        %li
+          %input{:type => "submit", :value => "Send", :name=> "publish", :class => "button"}
