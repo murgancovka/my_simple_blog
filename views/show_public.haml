@@ -1,0 +1,12 @@
+.notes
+  %h2 
+    = @content.title
+  %span.date
+    Added
+    = @content.created_at.strftime("%m.%d.%y | %H:%m")
+  %p
+    = @content.text
+  
+
+
+      

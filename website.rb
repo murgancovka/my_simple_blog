@@ -40,10 +40,16 @@ post '/about/edit/:id' do
   end
 end
 
+post '/search' do
+  @contents=Content.search params[:content]
+  haml :search
+end
+
+
 get '/login' do
-    require_login
-    haml :login,
-    :layout => false
+  require_login
+  haml :login,
+  :layout => false
 end
 
 post '/login' do
@@ -114,6 +120,11 @@ get '/posts/show/:id' do
   require_login
   @content=Content.find(params[:id])
   haml :show
+end
+
+get '/posts/show_public/:id' do
+  @content=Content.find(params[:id])
+  haml :show_public
 end
 
 get '/profile' do

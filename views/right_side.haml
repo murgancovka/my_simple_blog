@@ -9,6 +9,15 @@
       %input{:type => "submit", :value => "Login", :class => "button"}
 
   =styled_flash
+  
+%h1 Search post
+%form{ :action => "/search", :method => "post"}
+  %ol
+    %li
+      %input{:type => "text", :name => "content", :class => "text"}
+    %li
+      %input{:type => "submit", :value => "Search", :class => "button"}
+
 
   %p
     Visit my <a href="http://www.estof.net">home page</a>.

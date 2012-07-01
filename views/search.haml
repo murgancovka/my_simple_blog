@@ -1,0 +1,15 @@
+%h1 My Posts &darr;
+%p
+  =styled_flash
+
+.notes
+  - @contents.each do |item|
+    .title
+      %a{:href => "/posts/show_public/#{item.id}"}
+        = item.title[0..90]
+
+   
+  
+
+
+      
