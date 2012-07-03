@@ -40,7 +40,7 @@ I just wanted to see how works Sinatra, Does it better than Rails or not.
         
 # What you can do?
 
-* Add/Edit/Delete yout posts
+* Add/Edit/Delete your posts
 
 * Authorizated system
 
