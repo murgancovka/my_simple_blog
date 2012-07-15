@@ -158,15 +158,15 @@ post '/contact' do
   
   options = {
     :to => "hello@estof.net",
-    :from => "madgamer@ot.ee",
+    :from => "your_email",
     :subject=> "Contact Form",
     :body => "Body: #{params[:body]}",
     :via => :smtp,
     :via_options => {
       :address => 'smtp.gmail.com',
       :port => '587',
-      :user_name => 'vitalizakharoff@gmail.com',
-      :password => 'fAn1337!',
+      :user_name => 'your_pass_acc_on_gmail',
+      :password => 'your_pass',
       :authentication => :plain,
       :domain => "gmail.com"
      },
